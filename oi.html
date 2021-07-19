@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="iniCookie()">
+    <script>
+        function newCookie(nome, valor, expira){
+            var dtVal = "expires="+ expira;
+            document.cookie = nome + "=" + valor + "; " + dtVal;
+        }
+        function readCookie(nome){
+            var vnome = nome + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i<ca.length;i++){
+                var c = ca[i];
+                while(c.charAt(0)==' '){
+                    c = c.substring(1);
+                }
+                if(c.indexOf(vnome) == 0) return c.substring(vnome.length,c.length);
+            }
+            return "";
+        }
+        function iniCookie(){
+            var username = readCookie("username");
+            if(username!=""){
+                console.log("olá "+ username);
+                document.body.style.backgroundColor = "#000"
+            }else{
+                username = prompt("digite seu nome: ", "");
+                if(username != "" && username != null){
+                    newCookie("username", username, "Tue, 01 Jan 2115 12:00:00 UTC")
+                }
+            }
+        }
+    </script>
+</body>
+</html>

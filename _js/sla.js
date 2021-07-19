@@ -1,0 +1,1 @@
+Cookies.set('tema_escuro','true');
